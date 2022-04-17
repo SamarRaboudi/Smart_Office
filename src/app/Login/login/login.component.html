@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" type = "image/png" href = "../../../assets/icon.png">
+    <title>Smart Office</title>
+</head>
+<body>
+   <section>
+       <div class="imgBx">
+           <img src="../../../assets/office2.png" alt="">
+       </div>
+       <div class="contentBx">
+        <div class="formBx">
+            <h1>{{isLogin}}</h1>
+        <form [formGroup]="loginForm" method="post" >
+            <div class="text_field">
+                <input type="text" formControlName="name" required>
+                <span></span>
+                <label for="">Username</label>
+            </div>
+
+            <div  *ngIf="isLogin!=='LOGIN'" class="text_field">
+                <input type="email" formControlName="email" required>
+                <span></span>
+                <label>E-mail</label>
+            </div>
+             
+            
+            
+            <div class="text_field">
+                <input type="password" formControlName="password" required>
+                <span></span>
+                <label>Password</label>
+            </div>
+            <div *ngIf="isLogin!=='LOGIN'" class="text_field">
+                <input type="password" formControlName="confirmPassword"  required>
+                <span></span>
+                <label>Confirm Password</label>
+            </div>
+           <!--  <div class="pass">Forgot Password?</div> -->
+            
+            <input *ngIf="isLogin==='LOGIN'" type="submit" value="Login" (click)="onLogin()">
+            <input *ngIf="isLogin!=='LOGIN'" type="submit" value="SignUp" (click)="addUser()">
+            <div class="signup_link">
+                Not a member?   
+                 <a (click)="onSignUp()">{{signup}}</a>
+            </div>
+        </form>
+    </div>
+       </div>
+   </section>
+</body>
+</html>
