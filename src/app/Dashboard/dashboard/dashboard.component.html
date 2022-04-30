@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "icon" type = "image/png" href = "icon.png">
+    <link rel = "icon" type = "image/png" href = "../../../assets/office-building.png">
     <title>Smart Office</title>
-</head>
-<body >
+    
+</head >
+<body class="animate-in" >
+  
     <div class="dashboard">
         <div class="navbar">
             <div class="logo">
-                <img src="icon.png" alt="" width="40px">
-                <span class="logoname">SmartOffice</span>
+                <img src="../../../assets/office-building.png" alt="" width="50px">
+                <span class="logoname" id="clock">SMART OFFICE</span>
             </div>
             <div class="lang-account">
             <div class="lang">
@@ -23,105 +25,123 @@
             </div>
           
             <div class="account">
-                <img width="25px" src="admin.png" alt="">
-                <span class="name">Admin</span>
-                <span class="username">@admin</span>
+                <img width="25px" src="../../../assets/admin.png" alt="">
+                <span class="name">{{userName}}</span>
             </div></div>
 
         </div>
         <header>
-            <div class="heading">
-              <h5 class="date">1 Feb 2019</h5>
-              <h6 class="time">9:10 AM</h6>
-              <h2 class="title">Cloudy</h2>
-      </div>
-          <div class="weather f">
-            <div>
-              <strong>26°<sup>C</sup></strong>
-              <p>Indoor Temp.</p>
-            </div>
-            <div>
-              <strong>48.2%</strong>
-              <p>Outdoor Humidity</p>
-            </div>
-            <div>
-              <strong>52.99</strong>
-              <p>Indoor Temp.</p>
-            </div>
-          </div>
-        </header>
-        <section>
-        <!-- Category -->
-          <div class="category">
-            <ul>
-              <li><a href="#!" class="active">Living Room</a></li>
-              <li><a href="#!">Kitchen</a></li>
-              <li><a href="#!">Dinning</a></li>
-              <li><a href="#!">Weather</a></li>
-            </ul>
-          </div>
-        <!-- Appliances -->
-          <div class="appliances">
-            
-            <div class="appliance">
-              <input type="checkbox" name="a" id="a">
-              <label for="a">
-                <i class="l"></i>
-                <strong>Lamp</strong>
-                <span data-o="opened" data-c="closed"></span>
-                <small></small>
-              </label>
-            </div>
-            
-            <div class="appliance">
-              <input type="checkbox" name="a" id="b">
-              <label for="b">
-                <i class="r"></i>
-                <strong>Router</strong>
-                <span data-o="opened" data-c="closed"></span>
-                <small></small>
-              </label>
-            </div>
-            
-            <div class="appliance">
-              <input type="checkbox" name="a" id="c">
-              <label for="c">
-                <i class="a"></i>
-                <strong>Air</strong>
-                <span data-o="opened" data-c="closed"></span>
-                <small></small>
-              </label>
-            </div>
-            
-            <div class="appliance">
-              <input type="checkbox" name="a" id="d">
-              <label for="d">
-                <i class="f"></i>
-                <strong>Fridge</strong>
-                <span data-o="opened" data-c="closed"></span>
-                <small></small>
-              </label>
-            </div>
-            
-            <div class="m-player">
-              <h2>Shared Devices</h2>
-              <div class="player">
-                <div class="disc"></div>
-                <div class="artist">
-                  <p>Rosetta Stoned</p>
-                  <small>Tool</small>
-                </div>
-                <div class="controls">
-                  <input type="checkbox" name="a" id="p">
-                  <label for="p">
-                    <div class="control"></div>
-                  </label>
-                </div>
+          <div class="heading">
+            <div class="day">
+              <span id='x1' style="font-family: Goudy Old Style;">{{x1}}</span>
+              <p>
+
+              </p>
+              <span id='x2' style="font-family: Goudy Old Style;">{{x2}}</span>
+  
               </div>
-            </div>
-            
-          </div>
-        </section>
+          <div class="title">
+          <h2 class="" style="font-family: Lucida Sans;">HAVE A GREAT DAY</h2>
+          <h5 class="" style="font-family: Perpetua; margin-left: 1.5em;">full of productivity and good vibes</h5></div>
+
       </div>
+      <div class="weather">
+        <div class="temp">
+          <div style="display: flex; align-items: center;">
+            <img src="../../../assets/temp.png" alt="" width="30px">
+            <strong>{{temperature}}<sup>°C</sup></strong>
+          </div>
+          <p>Indoor Temperature</p>
+        </div>
+        <div class="humidity">
+          <div style="display: flex; align-items: center;">
+            <img src="../../../assets/humidity.png" alt="" width="25px">
+          <strong>48.2%</strong>
+        </div>
+          <p>Outdoor Humidity</p>
+        </div>
+
+      </div>
+  
+        </header>
+        <form [formGroup]="dashbordForm">
+        <div class="section">
+  
+           <div class="appliance">
+            <div class="device lamp" id="deviceBox"[ngClass]="this.dashbordForm?.get('lamp')?.value ?'activeLamp':'desactive'"> 
+              <div class="onoff"  >
+                <strong class="device" id="lampBox" [ngClass]="this.dashbordForm?.get('lamp')?.value ?'activeLamp':'desactive'">Lamp</strong>
+              <img src="../../../assets/hang-lamp.png" alt="" width="50px">
+            </div>
+            <div class="switch"><input type="checkbox" id="switch1" formControlName="lamp" onclick="isChecked()"/><label for="switch1">Toggle</label></div>
+          </div>
+                
+            
+            <div class="device air"  id="deviceBox2" [ngClass]="this.dashbordForm?.get('airConditioner')?.value ?'activeAirConditiner':'desactive'">
+              <div class="onoff" >
+                <strong class="device" id="airBox" [ngClass]="this.dashbordForm?.get('airConditioner')?.value ?'activeAirConditiner':'desactive'">Air Conditioner</strong>
+              <img src="../../../assets/air-conditioner.png" alt="" width="50px">
+             
+             
+            </div>
+           <div class="switch"><input type="checkbox" id="switch2" formControlName="airConditioner" onclick="isChecked2()"/><label for="switch2">Toggle</label></div> 
+            </div>
+          </div>
+          <div class="panel">
+            
+            <div class="panel-header">
+              <h2 class="title" style="font-family: Lucida Sans; color: #36454f; font-size:1.7em;text-decoration: underline;">Energy Saving:</h2>
+            </div>
+            <div class="panel-body">
+              
+                <div class="month">
+                  <div class="graph" style="height: 23%;">
+                    <div class="percent">23%</div>
+                    </div>
+          <div class="name">January</div>
+        </div>
+      
+      
+        <div class="month">
+          <div class="graph" style="height: 80%;">
+            <div class="percent">71%</div>
+            </div>
+  <div class="name">February</div>
+</div>
+
+
+  <div class="month">
+    <div class="graph" style="height: 62%;">
+      <div class="percent">62%</div>
+      </div>
+<div class="name">March</div>
+</div>
+
+
+  <div class="month">
+    <div class="graph" style="height: 12%;">
+      <div class="percent">12%</div>
+      </div>
+<div class="name">April</div>
+</div>
+
+
+  <div class="month">
+    <div class="graph" style="height: 36%;">
+      <div class="percent">36%</div>
+      </div>
+<div class="name">May</div>
+</div>
+
+          
+            </div>
+  
+          </div>
+      </div>
+    </form>
+</div>
+<!-- <script src="main.js"></script> -->
+
+      
 </body>
 </html>

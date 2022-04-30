@@ -35,14 +35,14 @@
                 <span></span>
                 <label>Password</label>
             </div>
-            <div *ngIf="isLogin!=='LOGIN'" class="text_field">
+         <!--    <div *ngIf="isLogin!=='LOGIN'" class="text_field">
                 <input type="password" formControlName="confirmPassword"  required>
                 <span></span>
                 <label>Confirm Password</label>
-            </div>
+            </div> -->
            <!--  <div class="pass">Forgot Password?</div> -->
             
-            <input *ngIf="isLogin==='LOGIN'" type="submit" value="Login" (click)="onLogin()">
+            <input *ngIf="isLogin==='LOGIN'"  type="submit" value="Login" (click)="onLogin()">
             <input *ngIf="isLogin!=='LOGIN'" type="submit" value="SignUp" (click)="addUser()">
             <div class="signup_link">
                 Not a member?   

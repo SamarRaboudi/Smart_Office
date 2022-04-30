@@ -18,7 +18,7 @@ addUser(user:User){
 
  return this.http.put<boolean>(this.usersUrl,user);
 }
-isExist(user:User){
+isExist(user:any){
   return this.http.post<boolean>(this.usersUrl+'/isExist',user);
   ;
 }
